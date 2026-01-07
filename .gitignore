@@ -5,3 +5,4 @@ dist.esm/
 .npmrc
 *.tsbuildinfo
 /preview.html
+/src/scripts/data/

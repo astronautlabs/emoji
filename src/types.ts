@@ -14,13 +14,14 @@ export interface EmojiCategory {
  * - variant: Characters that may be followed by U+fe0f (VS16, request color emoji presentation) 
  *   but cannot be followed by U+fe0e (VS15, request monochrome non-emoji presentation)
  * - diversity: The emoji supports skintone variation. Typically this is <unicode> <zwj> <skintone-modifier>,
- *   but multi_diversity_base_same can be present to specify a different sequence (where "skintone" can be any 
+ *   but multiDiversityBaseSame can be present to specify a different sequence (where "skintone" can be any 
  *   skintone modifier)
  * - variant,diversity: Character has the variant and diversity properties
  * - text-default: Must be followd by VS16 (request emoji presentation) to be emojis. The bare character 
  *   is text by default.
  * - multi-diversity: Emoji can be variated by two (or more) skintones. For these, consult 
- *   multi_diversity_base_different to construct diverse variations.
+ *   multiDiversityBaseDifferent to construct diverse variations. Typically multiDiversityBaseSame will also
+ *   be available for setting a single skintone for both values (which is more space efficient).
  * - directional,diversity: Emoji supports a single skintone modifier and the glyph direction can be changed using 
  *   <character> <zwj> <left/right arrow>. See Unicode TR-51 section 2.10 for more information.
  */
@@ -37,6 +38,17 @@ export interface Emoji {
      * The raw Unicode codepoints.
      */
     unicode: number[];
+
+    /**
+     * The Unicode codepoints as a dash-separated string (X-Y-Z).
+     */
+    unicodeString: string;
+
+    /**
+     * A short keyword that can be used as a :shortcut: for this emoji.
+     * Not all emoji have these.
+     */
+    shortcut?: string;
 
     /**
      * A short textual description

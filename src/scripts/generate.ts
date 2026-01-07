@@ -30,7 +30,7 @@ async function main(args: string[]) {
 // }
 
 function generateEmojis() {
-    const categories = <RawCategory[]>JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'emoji.json')).toString('utf-8'));
+    const categories = <EmojiCategory[]>JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'emoji.json')).toString('utf-8'));
     fs.writeFileSync(
         path.join(PROJECT_ROOT, 'src', 'emoji.generated.ts'), 
         unindent(
@@ -44,17 +44,7 @@ function generateEmojis() {
                 categories: categories.map<EmojiCategory>(cat => ({
                     id: cat.id,
                     title: cat.title,
-                    items: cat.items.map<Emoji>(item => ({
-                        type: item.type ?? 'normal',
-                        string: String.fromCodePoint(...item.unicode.split('-').map(x => Number.parseInt(x, 16))),
-                        description: item.description,
-                        excludeFromPicker: item.exclude_from_picker ?? false,
-                        keywords: item.keywords ? item.keywords.split(',') : [], 
-                        unicode: item.unicode.split('-').map(x => Number.parseInt(x, 16)),
-                        multiDiversityBaseSame: item.multi_diversity_base_same,
-                        multiDiversityBaseDifferent: item.multi_diversity_base_different,
-                        multiDiversityBaseDifferentIsSorted: item.multi_diversity_base_different_is_sorted ?? false,
-                    })),
+                    items: cat.items
                 }))
             })};
             `
@@ -63,23 +53,6 @@ function generateEmojis() {
 }
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
-
-interface RawCategory {
-    id: string;
-    title: string;
-    items: RawEmoji[];
-}
-
-interface RawEmoji {
-    unicode: string;
-    description: string;
-    keywords: string;
-    exclude_from_picker?: boolean;
-    type: EmojiType;
-    multi_diversity_base_same?: string;
-    multi_diversity_base_different?: string;
-    multi_diversity_base_different_is_sorted: boolean;
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
