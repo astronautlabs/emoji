@@ -1,5 +1,5 @@
 {
-  "version": "14.0.2",
+  "version": "1.0.0",
   "name": "@astronautlabs/emoji",
   "license": "MIT",
   "description": "A Unicode standard based way to implement emoji across all platforms.",
@@ -18,6 +18,9 @@
     "typescript": "^5.9.3",
     "yaml": "^2.8.2"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "Astronaut Labs LLC",
     "web": "https://astronautlabs.com/"
@@ -28,12 +31,12 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "module": "./dist/index.esm.js",
+  "module": "./dist.esm/index.js",
   "scripts": {
-    "build": "tsc -b",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -b",
+    "build:esm": "tsc -b tsconfig.esm.json",
     "generate": "ts-node ./src/scripts/generate.ts",
-    "deploy": "./scripts/deploy.sh gh-pages",
-    "test": "phantomjs ./src/test/testrunner.js",
-    "prepublishOnly": "run-s build test deploy"
+    "prepublishOnly": "npm run build"
   }
 }

@@ -11,12 +11,12 @@ Offers support for all Unicode-defined emoji which are recommended for general i
 ## License
 
 Code
-> Copyright 2025 Astronaut Labs, LLC.
-> Copyright 2019 Twitter, Inc and other contributors.
+> Copyright 2025 Astronaut Labs, LLC.  
+> Copyright 2019 Twitter, Inc and other contributors.  
 > Licensed under the MIT License: <http://opensource.org/licenses/MIT>
 
 Graphics
-> Copyright 2019 Twitter, Inc and other contributors.
+> Copyright 2019 Twitter, Inc and other contributors.  
 > Licensed under CC-BY 4.0: <https://creativecommons.org/licenses/by/4.0/>
 
 ### Attribution Requirements
