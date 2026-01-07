@@ -14,10 +14,8 @@
   "devDependencies": {
     "@types/mustache": "^4.2.6",
     "@types/yaml": "^1.9.7",
-    "mustache": "^4.2.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
-    "yaml": "^2.8.2"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "access": "public"
@@ -39,5 +37,8 @@
     "build:esm": "tsc -b tsconfig.esm.json",
     "generate": "ts-node ./src/scripts/generate.ts",
     "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "emoji-regex": "^10.6.0"
   }
 }

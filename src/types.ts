@@ -6,12 +6,26 @@ export interface EmojiCategory {
 }
 
 /**
- * Different emoji types have different encoding characteristics in Unicode. This is meant to 
- * bifurcate emojis along those lines. You can use these for emoji picker categories if you want,
- * but you may want to use other categorizations.
+ * Different emoji types have different presentational characteristics.
+ * - normal: The emoji has no variations
+ * - keycap: Used for numbers 0-10, number sign (#), asterisk (*)
+ * - flag: National flags
+ * - regional: The Regional Indicator characters
+ * - variant: Characters that may be followed by U+fe0f (VS16, request color emoji presentation) 
+ *   but cannot be followed by U+fe0e (VS15, request monochrome non-emoji presentation)
+ * - diversity: The emoji supports skintone variation. Typically this is <unicode> <zwj> <skintone-modifier>,
+ *   but multi_diversity_base_same can be present to specify a different sequence (where "skintone" can be any 
+ *   skintone modifier)
+ * - variant,diversity: Character has the variant and diversity properties
+ * - text-default: Must be followd by VS16 (request emoji presentation) to be emojis. The bare character 
+ *   is text by default.
+ * - multi-diversity: Emoji can be variated by two (or more) skintones. For these, consult 
+ *   multi_diversity_base_different to construct diverse variations.
+ * - directional,diversity: Emoji supports a single skintone modifier and the glyph direction can be changed using 
+ *   <character> <zwj> <left/right arrow>. See Unicode TR-51 section 2.10 for more information.
  */
 export type EmojiType = 'normal' | 'keycap' | 'flag' | 'regional' | 'variant' | 'diversity' | 'variant,diversity'
-    | 'text-default' | 'multi-diversity';
+    | 'text-default' | 'multi-diversity' | 'directional,diversity';
 
 export interface Emoji {
     /**
@@ -44,8 +58,18 @@ export interface Emoji {
      */
     type: EmojiType;
 
+    /**
+     * Provides a pattern for producing a single-skintone diverse variant of this 
+     * emoji. Replace the "skintone" component with one of the Fitzpatrick skin tone modifiers.
+     */
     multiDiversityBaseSame?: string;
+
+    /**
+     * Provides a pattern for producing a two-skintone diverse variant of this 
+     * emoji. Replace the "skintone" components with Fitzpatrick skin tone modifiers.
+     */
     multiDiversityBaseDifferent?: string;
+
     multiDiversityBaseDifferentIsSorted: boolean;
 }
 

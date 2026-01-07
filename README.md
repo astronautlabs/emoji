@@ -3,8 +3,8 @@
 A simple library that provides standard Unicode [emoji](http://en.wikipedia.org/wiki/Emoji) support across all platforms.
 Forked from [twemoji](https://github.com/twitter/twemoji).
 
-Adheres to the [Unicode 14.0 spec](https://unicode.org/versions/Unicode14.0.0/) and supports the 
-[Emoji 14.0 spec](https://www.unicode.org/reports/tr51/tr51-21.html). _We do not support custom emoji._
+Adheres to the [Unicode 17.0 spec](https://unicode.org/versions/Unicode17.0.0/) and supports the 
+[Emoji 17.0 spec](https://www.unicode.org/reports/tr51/tr51-29.html).
 
 Offers support for all Unicode-defined emoji which are recommended for general interchange (RGI).
 
@@ -95,15 +95,22 @@ Note that you do not need this for normal usage of the library (the data is gene
 
 The following contributors worked hard to build Twemoji:
 
-* Justine De Caires (Twitter)
-* Jason Sofonia (Twitter)
+* Justine De Caires (ex-Twitter)
+* Jason Sofonia (ex-Twitter)
 * Bryan Haggerty (ex-Twitter)
 * Nathan Downs (ex-Twitter)
 * Tom Wuttke (ex-Twitter)
 * Andrea Giammarchi (ex-Twitter)
 * Joen Asmussen (WordPress)
 * Marcus Kazmierczak (WordPress)
+* Kevin VQ Dam (ex-Discord)
+* Gica Tam (Discord)
+* Ben Olson (Discord)
 
 > _The goal of [the Twemoji project] is to simply provide emoji for everyone. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community due to the simple nature of the project._
 > 
-> _Thank you to all of our [contributors](https://github.com/twitter/twemoji/graphs/contributors)._
+> _Thank you to all of our [contributors](https://github.com/jdecked/twemoji/graphs/contributors)._
+
+# References
+
+- [UNICODE CLDR JSON Character Annotations](https://github.com/unicode-org/cldr-json/tree/main/cldr-json/cldr-annotations-full)

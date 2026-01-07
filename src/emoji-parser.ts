@@ -1,6 +1,7 @@
 import { EmojiParserAttributesCallback, EmojiImageResolver, EmojiParserOptions } from './types';
+import emojiRegex from 'emoji-regex';
 
-import EMOJI_REGEX from './regex.generated';
+const EMOJI_REGEX = emojiRegex();
 
 /**
  * Decorate the emojis found in HTML elements and strings with image versions (while remaining accessible).
@@ -56,17 +57,17 @@ export class EmojiDecorator {
     /**
      * The base URL where image assets are.
      */
-    baseUrl = 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/$VERSION/';
+    baseUrl = 'assets/';
 
     /**
-     * The image type (default is ".png").
+     * The image type (default is ".svg", ".png" is also available, but you must change size to "72x72").
      */
-    imageType = '.png';
+    imageType = '.svg';
 
     /**
-     * The image size to use (default is "72x72")
+     * The image size to use (default is "svg", "72x72" is also available)
      */
-    size = '72x72';
+    size = 'svg';
 
     /**
      * A class to add to <img> elements created while decorating.
@@ -107,6 +108,7 @@ export class EmojiDecorator {
                 })
                 .filter(([k, v]) => !k.startsWith('on')) // No scripting
                 .map(([k, v]) => `${k}="${this.escapeHTML(v)}"`)
+                .join('')
             } />`;
         });
     }
@@ -242,7 +244,9 @@ export class EmojiDecorator {
      * @param options 
      * @returns 
      */
-    static parse(what: string | HTMLElement, options?: EmojiParserOptions) {
+    static parse(what: string, options?: EmojiParserOptions): string;
+    static parse(what: HTMLElement, options?: EmojiParserOptions): HTMLElement;
+    static parse(what: string | HTMLElement, options?: EmojiParserOptions): Element | string {
         if (typeof what === 'string')
             return new EmojiDecorator(options).parseString(what);
         else
