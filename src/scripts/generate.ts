@@ -11,23 +11,23 @@ import { unindent } from './utils';
  * @param args 
  */
 async function main(args: string[]) {
-    await generateEmojiList();
+    //await generateEmojiList();
     generateEmojis();
 }
 
-async function generateEmojiList() {
-    let response = await fetch('https://raw.githubusercontent.com/unicode-org/cldr-json/refs/heads/main/cldr-json/cldr-annotations-full/annotations/en/annotations.json');
-    if (!response.ok)
-        throw new Error(`Failed to fetch emoji data from Unicode.org: ${response.status}`);
+// async function generateEmojiList() {
+//     let response = await fetch('https://raw.githubusercontent.com/unicode-org/cldr-json/refs/heads/main/cldr-json/cldr-annotations-full/annotations/en/annotations.json');
+//     if (!response.ok)
+//         throw new Error(`Failed to fetch emoji data from Unicode.org: ${response.status}`);
 
-    let annotations = (await response.json()).annotations.annotations;
+//     let annotations = (await response.json()).annotations.annotations;
 
-    let lines = text.split('\n').map(x => x.replace(/#.*/, '')).filter(x => x);
+//     let lines = text.split('\n').map(x => x.replace(/#.*/, '')).filter(x => x);
 
-    for (let line of lines) {
-        let fields = line.split(/ *; */);
-    }
-}
+//     for (let line of lines) {
+//         let fields = line.split(/ *; */);
+//     }
+// }
 
 function generateEmojis() {
     const categories = <RawCategory[]>JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'emoji.json')).toString('utf-8'));
