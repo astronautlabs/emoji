@@ -51,19 +51,19 @@ export interface Emoji {
     shortcut?: string;
 
     /**
-     * A short textual description
+     * A short textual description. Not all emoji have this
      */
-    description: string;
+    description?: string;
 
     /**
-     * A list of descriptive keywords
+     * A list of descriptive keywords. Not all emoji have these.
      */
-    keywords: string[];
+    keywords?: string[];
 
     /**
      * Whether its recommended to exclude this emoji from the emoji picker.
      */
-    excludeFromPicker: boolean;
+    excludeFromPicker?: boolean;
 
     /**
      * The type of this emoji. See EmojiType for details.
@@ -82,7 +82,7 @@ export interface Emoji {
      */
     multiDiversityBaseDifferent?: string;
 
-    multiDiversityBaseDifferentIsSorted: boolean;
+    multiDiversityBaseDifferentIsSorted?: boolean;
 }
 
 export type EmojiImageResolver = (iconId: string, options: any, variant?: string) => string;
