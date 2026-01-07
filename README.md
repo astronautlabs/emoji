@@ -85,9 +85,9 @@ for (const category of EMOJI.categories) {
 
 ### Using the Raw Data
 
-The raw emoji data used by this library is also bundled in the NPM package in YAML format, should you wish to use it outside of the library. You can find it at:
+The raw emoji data used by this library is also bundled in the NPM package in JSON format, should you wish to use it outside of the library. You can find it at:
 
-> `./node_modules/@astronautlabs/emoji/emoji.yml`
+> `./node_modules/@astronautlabs/emoji/emoji.json`
 
 Note that you do not need this for normal usage of the library (the data is generated into the Typescript source files).
 
