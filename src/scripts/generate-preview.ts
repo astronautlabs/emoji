@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { EmojiDecorator } from '../emoji-parser';
+import { EmojiDecorator } from '../emoji-decorator';
 import { EMOJI } from '../emoji.generated';
 import { unindent } from './utils';
 
