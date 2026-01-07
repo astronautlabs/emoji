@@ -1,7 +1,10 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "module": "es2022",
+        "target": "ES2016",
+        "module": "ES2022",
+        "rootDir": "./src",
+        "baseUrl": "./src",
         "outDir": "dist.esm"
     }
 }
