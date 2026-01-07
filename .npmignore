@@ -1,0 +1,3 @@
+node_modules/
+src/generate.ts
+dist/generate.ts

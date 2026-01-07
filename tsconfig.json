@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "ES2016",
+      "module": "NodeNext",
+      "lib": ["ES2023", "DOM"],
+      "strict": false,
+      "declaration": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "./dist"
+    },
+    "include": ["./src/**/*.ts"]
+  }
