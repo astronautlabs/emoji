@@ -1,5 +1,5 @@
 {
-  "version": "17.0.0",
+  "version": "17.1.0",
   "name": "@astronautlabs/emoji",
   "license": "MIT",
   "description": "A Unicode standard based way to implement emoji across all platforms.",
